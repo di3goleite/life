@@ -1,0 +1,23 @@
+{
+  "name": "life",
+  "version": "1.0.0",
+  "description": ":rocket: Extensible dashboard to keep the important things visible and save your life",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/di3goleite/life.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/di3goleite/life/issues"
+  },
+  "homepage": "https://github.com/di3goleite/life#readme",
+  "dependencies": {
+    "blessed": "^0.1.81",
+    "blessed-contrib": "^4.8.5"
+  }
+}
