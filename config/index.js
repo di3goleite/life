@@ -1,5 +1,5 @@
-const table = require('./table.js');
+const cryptoPrices = require('./cryptoPrices.js');
 
 module.exports = {
-  table: table
+  cryptoPrices: cryptoPrices
 };

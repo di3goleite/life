@@ -16,15 +16,13 @@ grid.set(8, 2, 4, 2, blessed.box, {label: 'GitHub Trends'});
 // Money column
 grid.set(0, 4, 4, 4, blessed.box, {label: 'Bitcoin Chart'});
 
-const table = grid.set(4, 4, 4, 4, contrib.table, config.table);
-
-lib.crypto.getPrices(function(data) {
-    table.setData({
+const cryptoPrices = grid.set(4, 4, 4, 4, contrib.table, config.cryptoPrices);
+lib.cryptoPrices.getPrices(function(data) {
+    cryptoPrices.setData({
         headers: ['Coin', 'Price (USD)', 'Change (24H)', 'Change (1H)'],
         data: data
     });
-
-    table.focus();
+    cryptoPrices.focus();
     screen.render();
 });
 
