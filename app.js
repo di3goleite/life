@@ -7,6 +7,10 @@ const lib = require('./lib');
 const screen = blessed.screen();
 const grid = new contrib.grid({rows: 12, cols: 12, screen: screen});
 
+const errorHandle = function(err){
+  console.log(err)
+}
+
 // Hacker News
 const hackerNews = grid.set(0, 0, 4, 4, contrib.table, config.hackerNews);
 
@@ -23,7 +27,15 @@ lib.hackerNews.get(function(data) {
 grid.set(4, 0, 4, 4, blessed.box, {label: 'Overflow News'});
 
 // Twitter Top Trends
-grid.set(8, 0, 4, 2, blessed.box, {label: 'Twitter Top Trends'});
+const twitterTopTrends = grid.set(8, 0, 4, 2, contrib.log, config.twitterTopTrends);
+
+lib.twitterTopTrends.get()
+  .then(function(data){
+    data.forEach((tweet) => {twitterTopTrends.log(tweet)})
+    twitterTopTrends.focus();
+    screen.render();
+  })
+  .catch(errorHandle);
 
 // GitHub Trends
 grid.set(8, 2, 4, 2, blessed.box, {label: 'GitHub Trends'});
