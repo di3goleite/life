@@ -29,7 +29,17 @@ grid.set(8, 0, 4, 2, blessed.box, {label: 'Twitter Top Trends'});
 grid.set(8, 2, 4, 2, blessed.box, {label: 'GitHub Trends'});
 
 // Bitcoin Chart
-grid.set(0, 4, 4, 4, blessed.box, {label: 'Bitcoin Chart'});
+const bitcoinChart = grid.set(0, 4, 4, 4, contrib.line, config.bitcoinChart);
+
+lib.bitcoinChart.get(function(data) {
+  bitcoinChart.setData({
+    title: 'Bitcoin (USD)',
+    x: data.time,
+    y: data.value
+  });
+  bitcoinChart.focus();
+  screen.render();
+});
 
 // Crypto Prices
 const cryptoPrices = grid.set(4, 4, 4, 4, contrib.table, config.cryptoPrices);
