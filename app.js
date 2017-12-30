@@ -72,7 +72,14 @@ grid.set(8, 4, 4, 4, blessed.box, {label: 'Crypto News'});
 grid.set(0, 8, 4, 4, blessed.box, {label: 'Google Calendar'});
 
 // Weather
-grid.set(4, 8, 4, 4, blessed.box, {label: 'Weather'});
+const weather = grid.set(4, 8, 4, 4, blessed.log, config.weather);
+lib.weather
+.then(function(data){
+  data.forEach((line) => { weather.log(line) })
+  weather.focus();
+  screen.render();
+})
+.catch(errorHandle)
 
 // Alarm
 grid.set(8, 8, 4, 2, blessed.box, {label: 'Alarm'});
