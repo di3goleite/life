@@ -7,6 +7,10 @@ const lib = require('./lib');
 const screen = blessed.screen();
 const grid = new contrib.grid({rows: 12, cols: 12, screen: screen});
 
+const errorHandle = function(err){
+  console.log(err)
+}
+
 // News column
 const hackerNews = grid.set(0, 0, 4, 4, contrib.table, config.hackerNews);
 
@@ -20,8 +24,17 @@ lib.hackerNews.get(function(data) {
 });
 
 grid.set(4, 0, 4, 4, blessed.box, {label: 'Overflow News'});
-grid.set(8, 0, 4, 2, blessed.box, {label: 'Twitter Top Trends'});
-grid.set(8, 2, 4, 2, blessed.box, {label: 'GitHub Trends'});
+
+const twitterTrends = grid.set(8, 0, 4, 4, contrib.log, config.twitterTrends);
+
+lib.twitterTrends.get()
+.then(function(data){
+  data.forEach((tweet) => { twitterTrends.log(tweet) })
+  twitterTrends.focus();
+  screen.render();
+}).catch(errorHandle)
+
+grid.set(8, 4, 4, 4, blessed.box, {label: 'GitHub Trends'});
 
 // Money column
 grid.set(0, 4, 4, 4, blessed.box, {label: 'Bitcoin Chart'});
@@ -37,13 +50,13 @@ lib.cryptoPrices.get(function(data) {
   screen.render();
 });
 
-grid.set(8, 4, 4, 4, blessed.box, {label: 'Crypto News'});
+grid.set(8, 8, 4, 4, blessed.box, {label: 'Crypto News'});
 
 // Organization column
 grid.set(0, 8, 4, 4, blessed.box, {label: 'Google Calendar'});
 grid.set(4, 8, 4, 4, blessed.box, {label: 'Weather'});
-grid.set(8, 8, 4, 2, blessed.box, {label: 'Alarm'});
-grid.set(8, 10, 4, 2, blessed.box, {label: 'Clock'});
+// grid.set(8, 8, 4, 2, blessed.box, {label: 'Alarm'});
+// grid.set(8, 10, 4, 2, blessed.box, {label: 'Clock'});
 
 screen.key(['escape', 'q', 'C-c'], function (ch, key) {
   return process.exit(0);
