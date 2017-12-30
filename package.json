@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/di3goleite/life#readme",
   "dependencies": {
+    "async": "^2.6.0",
     "axios": "^0.17.1",
     "blessed": "^0.1.81",
     "blessed-contrib": "^4.8.5"
