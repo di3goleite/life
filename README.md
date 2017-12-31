@@ -7,7 +7,7 @@
 
 ## Configure
 
-Copy the environment example files and fill them with the correct values.
+Copy the environment example files and fill them with the correct values:
 
 ```
 cp .env.example .env
