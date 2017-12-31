@@ -5,6 +5,14 @@
 
 ![First Version](assets/screenshot.png)
 
+## Configure
+
+Copy the environment example files and fill them with the correct values.
+
+```
+cp .env.example .env
+```
+
 ## Install
 
 ```
@@ -16,3 +24,4 @@ $ npm install
 ```
 $ npm start
 ```
+

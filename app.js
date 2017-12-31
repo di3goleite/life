@@ -9,10 +9,6 @@ const lib = require('./lib');
 const screen = blessed.screen();
 const grid = new contrib.grid({rows: 12, cols: 12, screen: screen});
 
-const errorHandle = function(err){
-  console.log(err)
-}
-
 // Hacker News
 const hackerNews = grid.set(0, 0, 4, 4, contrib.table, config.hackerNews);
 
@@ -33,7 +29,7 @@ const twitterTopTrends = grid.set(8, 0, 4, 2, contrib.log, config.twitterTopTren
 
 lib.twitterTopTrends.get()
   .then(function(data){
-    data.forEach((tweet) => {twitterTopTrends.log(tweet)})
+    data.forEach((tweet) => {twitterTopTrends.log(tweet)});
     twitterTopTrends.focus();
     screen.render();
   })
@@ -77,11 +73,13 @@ grid.set(0, 8, 4, 4, blessed.box, {label: 'Google Calendar'});
 const weather = grid.set(4, 8, 4, 4, blessed.log, config.weather);
 lib.weather
 .then(function(data){
-  data.forEach((line) => { weather.log(line) })
+  data.forEach((line) => { weather.log(line) });
   weather.focus();
   screen.render();
 })
-.catch(errorHandle)
+.catch(function(err) {
+  console.log(err);
+});
 
 // Alarm
 grid.set(8, 8, 4, 2, blessed.box, {label: 'Alarm'});
