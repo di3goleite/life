@@ -28,15 +28,26 @@ grid.set(4, 0, 4, 4, blessed.box, {label: 'Overflow News'});
 const twitterTopTrends = grid.set(8, 0, 4, 2, contrib.log, config.twitterTopTrends);
 
 lib.twitterTopTrends.get()
-  .then(function(data){
+  .then(function(data) {
     data.forEach((tweet) => {twitterTopTrends.log(tweet)});
     twitterTopTrends.focus();
     screen.render();
   })
-  .catch(errorHandle);
+  .catch(function(error) {
+    console.log(error);
+  });
 
 // GitHub Trends
-grid.set(8, 2, 4, 2, blessed.box, {label: 'GitHub Trends'});
+const githubTrends = grid.set(8, 2, 4, 2, contrib.table, config.githubTrends);
+
+lib.githubTrends.get(function(data) {
+  githubTrends.setData({
+    headers: ['Stars', 'Repo'],
+    data: data
+  });
+  githubTrends.focus();
+  screen.render();
+});
 
 // Bitcoin Chart
 const bitcoinChart = grid.set(0, 4, 4, 4, contrib.line, config.bitcoinChart);
@@ -92,3 +103,4 @@ screen.key(['escape', 'q', 'C-c'], function (ch, key) {
 });
 
 screen.render();
+
