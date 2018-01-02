@@ -17,7 +17,6 @@ lib.hackerNews.get(function(data) {
     headers: ['#', 'Title'],
     data: data
   });
-  hackerNews.focus();
   screen.render();
 });
 
@@ -28,24 +27,22 @@ grid.set(4, 0, 4, 4, blessed.box, {label: 'Overflow News'});
 const twitterTopTrends = grid.set(8, 0, 4, 2, contrib.log, config.twitterTopTrends);
 
 lib.twitterTopTrends.get()
-  .then(function(data) {
-    data.forEach((tweet) => {twitterTopTrends.log(tweet)});
-    twitterTopTrends.focus();
-    screen.render();
-  })
-  .catch(function(error) {
-    console.log(error);
-  });
+.then(function(data) {
+  data.forEach((tweet) => {twitterTopTrends.log(tweet)});
+  screen.render();
+})
+.catch(function(error) {
+  console.log(error);
+});
 
 // GitHub Trends
 const githubTrends = grid.set(8, 2, 4, 2, contrib.table, config.githubTrends);
 
 lib.githubTrends.get(function(data) {
   githubTrends.setData({
-    headers: ['Stars', 'Repo'],
+    headers: ['Stars', 'Repository'],
     data: data
   });
-  githubTrends.focus();
   screen.render();
 });
 
@@ -58,7 +55,6 @@ lib.bitcoinChart.get(function(data) {
     x: data.time,
     y: data.value
   });
-  bitcoinChart.focus();
   screen.render();
 });
 
@@ -70,7 +66,6 @@ lib.cryptoPrices.get(function(data) {
     headers: ['Coin', 'Price (USD)', 'Change (24H)', 'Change (1H)'],
     data: data
   });
-  cryptoPrices.focus();
   screen.render();
 });
 
@@ -85,7 +80,6 @@ const weather = grid.set(4, 8, 4, 4, blessed.log, config.weather);
 lib.weather
 .then(function(data){
   data.forEach((line) => { weather.log(line) });
-  weather.focus();
   screen.render();
 })
 .catch(function(err) {

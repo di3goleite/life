@@ -1,11 +1,9 @@
 module.exports = {
-  keys: true,
+  keys: false,
   fg: 'white',
-  selectedFg: 'white',
-  selectedBg: 'blue',
-  interactive: true,
+  interactive: false,
   label: 'GitHub Trends',
   border: {type: "line", fg: "cyan"},
-  columnSpacing: 5,
-  columnWidth: [5, 19]
+  columnSpacing: 2,
+  columnWidth: [6, 70]
 };

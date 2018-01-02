@@ -1,9 +1,7 @@
 module.exports = {
-  keys: true,
+  keys: false,
   fg: 'white',
-  selectedFg: 'white',
-  selectedBg: 'blue',
-  interactive: true,
+  interactive: false,
   label: 'Crypto Prices',
   border: {type: "line", fg: "cyan"},
   columnSpacing: 5,
