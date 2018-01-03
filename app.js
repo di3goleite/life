@@ -77,9 +77,10 @@ grid.set(0, 8, 4, 4, blessed.box, {label: 'Google Calendar'});
 
 // Weather
 const weather = grid.set(4, 8, 4, 4, blessed.log, config.weather);
+
 lib.weather
-.then(function(data){
-  data.forEach((line) => { weather.log(line) });
+.then(function(data) {
+  data.forEach((line) => weather.log(line));
   screen.render();
 })
 .catch(function(err) {
