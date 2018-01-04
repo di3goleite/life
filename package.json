@@ -21,6 +21,7 @@
     "axios": "^0.17.1",
     "blessed": "^0.1.81",
     "blessed-contrib": "^4.8.5",
+    "change-case": "^3.0.1",
     "dotenv": "^4.0.0",
     "oauth": "^0.9.15",
     "trending-github": "^1.0.2"

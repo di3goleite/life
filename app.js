@@ -4,7 +4,7 @@ const blessed = require('blessed');
 const contrib = require('blessed-contrib');
 
 const config = require('./config');
-const lib = require('./lib');
+const m = require('./modules');
 
 const screen = blessed.screen();
 const grid = new contrib.grid({rows: 12, cols: 12, screen: screen});
@@ -12,7 +12,7 @@ const grid = new contrib.grid({rows: 12, cols: 12, screen: screen});
 // Hacker News
 const hackerNews = grid.set(0, 0, 4, 4, contrib.table, config.hackerNews);
 
-lib.hackerNews.get(function(data) {
+m.hackerNews.get(function(data) {
   hackerNews.setData({
     headers: ['#', 'Title'],
     data: data
@@ -26,7 +26,7 @@ grid.set(4, 0, 4, 4, blessed.box, {label: 'Overflow News'});
 // Twitter Top Trends
 const twitterTopTrends = grid.set(8, 0, 4, 2, contrib.log, config.twitterTopTrends);
 
-lib.twitterTopTrends.get()
+m.twitterTopTrends.get()
 .then(function(data) {
   data.forEach((tweet) => {twitterTopTrends.log(tweet)});
   screen.render();
@@ -38,7 +38,7 @@ lib.twitterTopTrends.get()
 // GitHub Trends
 const githubTrends = grid.set(8, 2, 4, 2, contrib.table, config.githubTrends);
 
-lib.githubTrends.get(function(data) {
+m.githubTrends.get(function(data) {
   githubTrends.setData({
     headers: ['Stars', 'Repository'],
     data: data
@@ -49,7 +49,7 @@ lib.githubTrends.get(function(data) {
 // Bitcoin Chart
 const bitcoinChart = grid.set(0, 4, 4, 4, contrib.line, config.bitcoinChart);
 
-lib.bitcoinChart.get(function(data) {
+m.bitcoinChart.get(function(data) {
   bitcoinChart.setData({
     title: 'Bitcoin (USD)',
     x: data.time,
@@ -61,7 +61,7 @@ lib.bitcoinChart.get(function(data) {
 // Crypto Prices
 const cryptoPrices = grid.set(4, 4, 4, 4, contrib.table, config.cryptoPrices);
 
-lib.cryptoPrices.get(function(data) {
+m.cryptoPrices.get(function(data) {
   cryptoPrices.setData({
     headers: ['Coin', 'Price (USD)', 'Change (24H)', 'Change (1H)'],
     data: data
@@ -78,7 +78,7 @@ grid.set(0, 8, 4, 4, blessed.box, {label: 'Google Calendar'});
 // Weather
 const weather = grid.set(4, 8, 4, 4, blessed.log, config.weather);
 
-lib.weather
+m.weather
 .then(function(data) {
   data.forEach((line) => weather.log(line));
   screen.render();
