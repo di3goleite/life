@@ -7,20 +7,21 @@
 
 ## Configure
 
-Copy the environment example files and fill them with the correct values:
+Generate the environment variable values, see `.env.example`:
+* [Twitter](https://developer.twitter.com/)
+* [Forecast.io](http://forecast.io/)
 
+Create the `.env` file and insert the generated values:
 ```
 cp .env.example .env
 ```
 
 ## Install
-
 ```
 $ npm install
 ```
 
 ## Run
-
 ```
 $ npm start
 ```
