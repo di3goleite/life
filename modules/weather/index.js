@@ -95,5 +95,5 @@ function render(data, callback) {
   callback(output);
 }
 
-module.exports = { get, render, config };
+module.exports = { get, config, render };
 

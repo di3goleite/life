@@ -23,16 +23,13 @@ m.hackerNews.get(function(data) {
 // Overflow News
 grid.set(4, 0, 4, 4, blessed.box, {label: 'Overflow News'});
 
-// Twitter Top Trends
-const twitterTopTrends = grid.set(8, 0, 4, 2, contrib.log, config.twitterTopTrends);
+// Twitter Trends
+const twitter = grid.set(8, 0, 4, 2, contrib.log, m.twitter.config);
 
-m.twitterTopTrends.get()
-.then(function(data) {
-  data.forEach((tweet) => {twitterTopTrends.log(tweet)});
-  screen.render();
-})
-.catch(function(error) {
-  console.log(error);
+m.twitter.get(function(trends) {
+  trends.forEach(function(trend) {
+    twitter.log(trend);
+  });
 });
 
 // GitHub Trends
