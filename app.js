@@ -10,14 +10,12 @@ const screen = blessed.screen();
 const grid = new contrib.grid({rows: 12, cols: 12, screen: screen});
 
 // Hacker News
-const hackerNews = grid.set(0, 0, 4, 4, contrib.table, config.hackerNews);
+const hackerNews = grid.set(0, 0, 4, 4, contrib.log, m.hackerNews.config);
 
-m.hackerNews.get(function(data) {
-  hackerNews.setData({
-    headers: ['#', 'Title'],
-    data: data
+m.hackerNews.get(function(lines) {
+  lines.forEach(function(line) {
+    hackerNews.log(line);
   });
-  screen.render();
 });
 
 // Overflow News
@@ -26,9 +24,9 @@ grid.set(4, 0, 4, 4, blessed.box, {label: 'Overflow News'});
 // Twitter Trends
 const twitter = grid.set(8, 0, 4, 2, contrib.log, m.twitter.config);
 
-m.twitter.get(function(trends) {
-  trends.forEach(function(trend) {
-    twitter.log(trend);
+m.twitter.get(function(lines) {
+  lines.forEach(function(line) {
+    twitter.log(line);
   });
 });
 
