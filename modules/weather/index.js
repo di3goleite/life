@@ -17,11 +17,11 @@ function get(callback) {
           icon: changeCase.camel(forecast.icon),
           time: forecast.time,
           summary: forecast.summary,
-          humidity: forecast.humidity,
-          temperatureLow: forecast.temperatureLow,
-          temperatureHigh: forecast.temperatureHigh,
-          precipitationIntensity: forecast.precipIntensity,
-          precipitationProbability: forecast.precipProbability
+          humidity: Math.ceil(forecast.humidity * 100),
+          temperatureLow: Math.ceil(forecast.temperatureLow),
+          temperatureHigh: Math.ceil(forecast.temperatureHigh),
+          precipitationIntensity: Math.ceil(forecast.precipIntensity * 1000),
+          precipitationProbability: Math.ceil(forecast.precipProbability * 100)
         };
       });
 
@@ -45,18 +45,52 @@ function humanizeDate(epoch) {
 
 function render(data, callback) {
   const ICONS = require('./icons');
-  const today = data[0];
-  const card = [
-    `  ${humanizeDate(today.time)}`,
-    `  ${today.summary}`,
-    `  ${today.temperatureLow} - ${today.temperatureHigh} ˚C`,
-    `  ${today.precipitationIntensity * 1000} mm | ${today.precipitationProbability * 100} %`,
-    `  ${today.humidity * 100} %`
+  const cardIcon = data[0].icon;
+  const today = [
+    `${humanizeDate(data[0].time)}`,
+    `${data[0].summary}`,
+    `${data[0].temperatureLow} - ${data[0].temperatureHigh}˚C`,
+    `${data[0].precipitationIntensity}mm | ${data[0].precipitationProbability}%`,
+    `${data[0].humidity}% of humidity`
   ];
 
-  let output = ICONS[today.icon].map(function(iconSlice, index) {
-    return iconSlice + card[index];
+  // Generate weather card for today
+  let output = ICONS[cardIcon].map(function(iconSlice, index) {
+    return iconSlice + '  ' + today[index];
   });
+
+  // Remove first weather prediction
+  data.shift();
+
+  // Add empty line to use as separator
+  output.unshift(' ');
+  output.push(' ');
+
+  // Format weather card for next days
+  let nextThreeDays = [
+    '  ' +
+    humanizeDate(data[0].time) + '  ' +
+    humanizeDate(data[1].time) + '  ' +
+    humanizeDate(data[2].time),
+
+    '  ' +
+    data[0].temperatureLow + ' - ' + data[0].temperatureHigh + '˚C         ' +
+    data[1].temperatureLow + ' - ' + data[1].temperatureHigh + '˚C         ' +
+    data[2].temperatureLow + ' - ' + data[2].temperatureHigh + '˚C',
+
+    '  ' +
+    data[0].precipitationIntensity + ' mm | ' + data[0].precipitationProbability + '%       ' +
+    data[1].precipitationIntensity + ' mm | ' + data[1].precipitationProbability + '%       ' +
+    data[2].precipitationIntensity + ' mm | ' + data[2].precipitationProbability + '%',
+
+    '  ' +
+    data[0].humidity + '% of humidity   ' +
+    data[1].humidity + '% of humidity   ' +
+    data[2].humidity + '% of humidity'
+  ];
+
+  // Put together the card with the next three days prediction
+  output = output.concat(nextThreeDays);
 
   callback(output);
 }
