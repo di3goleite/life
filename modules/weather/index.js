@@ -1,8 +1,6 @@
 const axios = require('axios');
 const changeCase = require('change-case');
-
 const config = require('./config');
-const icons = require('./icons');
 
 function get(callback) {
   const API = 'https://api.darksky.net/forecast';
@@ -19,19 +17,49 @@ function get(callback) {
           icon: changeCase.camel(forecast.icon),
           time: forecast.time,
           summary: forecast.summary,
-          temperatureHigh: forecast.temperatureHigh,
+          humidity: forecast.humidity,
           temperatureLow: forecast.temperatureLow,
+          temperatureHigh: forecast.temperatureHigh,
+          precipitationIntensity: forecast.precipIntensity,
           precipitationProbability: forecast.precipProbability
         };
       });
 
       callback(forecasts);
     });
-};
+}
 
-module.exports = {
-  get: get,
-  config: config,
-  icons: icons
-};
+function humanizeDate(epoch) {
+  const today = new Date(epoch * 1000);
+  let humanizedDate = '';
+
+  today.toString()
+    .split(' ')
+    .slice(0, 4)
+    .forEach(function(fragment) {
+      humanizedDate = humanizedDate + fragment + ' ';
+    });
+
+  return humanizedDate;
+}
+
+function render(data, callback) {
+  const ICONS = require('./icons');
+  const today = data[0];
+  const card = [
+    `  ${humanizeDate(today.time)}`,
+    `  ${today.summary}`,
+    `  ${today.temperatureLow} - ${today.temperatureHigh} ˚C`,
+    `  ${today.precipitationIntensity * 1000} mm | ${today.precipitationProbability * 100} %`,
+    `  ${today.humidity * 100} %`
+  ];
+
+  let output = ICONS[today.icon].map(function(iconSlice, index) {
+    return iconSlice + card[index];
+  });
+
+  callback(output);
+}
+
+module.exports = { get, render, config };
 
