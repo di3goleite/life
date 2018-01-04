@@ -8,7 +8,7 @@
 ## Configure
 
 Generate the environment variable values, see `.env.example`:
-* [Twitter](https://developer.twitter.com/)
+* [Twitter Apps](https://apps.twitter.com/)
 * [Forecast.io](http://forecast.io/)
 
 Create the `.env` file and insert the generated values:
