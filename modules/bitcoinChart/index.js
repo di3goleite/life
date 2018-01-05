@@ -7,12 +7,12 @@ function get(callback) {
       let xAxis = [];
       let yAxis = [];
 
-      response.data.values.map(function(value) {
+      response.data.values.forEach(function(value) {
         xAxis.push(((new Date(value.x * 1000)).getMonth() + 1) + '/' + (new Date(value.x * 1000)).getDate());
         yAxis.push(value.y);
       });
 
-      callback({time: xAxis, value: yAxis});
+      callback({time: xAxis.slice(-6), value: yAxis.slice(-6)});
     });
 }
 

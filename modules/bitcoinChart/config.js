@@ -1,11 +1,11 @@
 module.exports = {
   style: {
-    line: "yellow",
-    text: "green",
-    baseline: "black"
+    line: "green",
+    text: "white",
+    baseline: "yellow"
   },
-  xLabelPadding: 3,
-  xPadding: 5,
+  xLabelPadding: 5,
+  xPadding: 10,
   showLegend: false,
   wholeNumbersOnly: false,
   label: 'Bitcoin Chart'

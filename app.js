@@ -46,7 +46,6 @@ m.bitcoinChart.get(function(data) {
     x: data.time,
     y: data.value
   });
-  screen.render();
 });
 
 // Crypto Prices
@@ -57,7 +56,6 @@ m.cryptoPrices.get(function(data) {
     headers: ['Coin', 'Price (USD)', 'Change (24H)', 'Change (1H)'],
     data: data
   });
-  screen.render();
 });
 
 // Crypto News
