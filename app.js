@@ -10,11 +10,11 @@ const screen = blessed.screen();
 const grid = new contrib.grid({rows: 12, cols: 12, screen: screen});
 
 // Hacker News
-const hackerNews = grid.set(0, 0, 4, 4, contrib.log, m.hackerNews.config);
+const hackernews = grid.set(0, 0, 4, 4, contrib.log, m.hackernews.config);
 
-m.hackerNews.get(function(lines) {
+m.hackernews.get(function(lines) {
   lines.forEach(function(line) {
-    hackerNews.log(line);
+    hackernews.log(line);
   });
 });
 
@@ -31,14 +31,12 @@ m.twitter.get(function(lines) {
 });
 
 // GitHub Trends
-const githubTrends = grid.set(8, 2, 4, 2, contrib.table, config.githubTrends);
+const github = grid.set(8, 2, 4, 2, contrib.log, m.github.config);
 
-m.githubTrends.get(function(data) {
-  githubTrends.setData({
-    headers: ['Stars', 'Repository'],
-    data: data
+m.github.get(function(lines) {
+  lines.forEach(function(line) {
+    github.log(line);
   });
-  screen.render();
 });
 
 // Bitcoin Chart
