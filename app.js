@@ -10,11 +10,11 @@ const screen = blessed.screen();
 const grid = new contrib.grid({rows: 12, cols: 12, screen: screen});
 
 // Hacker News
-const hackernews = grid.set(0, 0, 4, 4, contrib.log, m.hackernews.config);
+const hackerNews = grid.set(0, 0, 4, 4, contrib.log, m.hackerNews.config);
 
-m.hackernews.get(function(lines) {
+m.hackerNews.get(function(lines) {
   lines.forEach(function(line) {
-    hackernews.log(line);
+    hackerNews.log(line);
   });
 });
 
@@ -22,20 +22,20 @@ m.hackernews.get(function(lines) {
 grid.set(4, 0, 4, 4, blessed.box, {label: 'Overflow News'});
 
 // Twitter Trends
-const twitter = grid.set(8, 0, 4, 2, contrib.log, m.twitter.config);
+const twitterTrends = grid.set(8, 0, 4, 2, contrib.log, m.twitterTrends.config);
 
-m.twitter.get(function(lines) {
+m.twitterTrends.get(function(lines) {
   lines.forEach(function(line) {
-    twitter.log(line);
+    twitterTrends.log(line);
   });
 });
 
 // GitHub Trends
-const github = grid.set(8, 2, 4, 2, contrib.log, m.github.config);
+const githubTrends = grid.set(8, 2, 4, 2, contrib.log, m.githubTrends.config);
 
-m.github.get(function(lines) {
+m.githubTrends.get(function(lines) {
   lines.forEach(function(line) {
-    github.log(line);
+    githubTrends.log(line);
   });
 });
 
