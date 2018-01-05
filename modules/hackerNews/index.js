@@ -7,7 +7,7 @@ function fetchStories(callback) {
     .then(function(response) {
       let topStories = [];
 
-      for (var i = 0; i < 15; i++) {
+      for (var i = 0; i < 12; i++) {
         topStories.push(response.data[i]);
       }
 

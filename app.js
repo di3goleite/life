@@ -67,11 +67,8 @@ m.cryptoPrices.get(function(data) {
 // Crypto News
 grid.set(8, 4, 4, 4, blessed.box, {label: 'Crypto News'});
 
-// Google Calendar
-grid.set(0, 8, 4, 4, blessed.box, {label: 'Google Calendar'});
-
 // Weather
-const weather = grid.set(4, 8, 4, 4, blessed.log, m.weather.config);
+const weather = grid.set(0, 8, 4, 4, blessed.log, m.weather.config);
 
 m.weather.get(function(data) {
   m.weather.render(data, function(lines) {
@@ -80,6 +77,9 @@ m.weather.get(function(data) {
     });
   });
 });
+
+// Google Calendar
+grid.set(4, 8, 4, 4, blessed.box, {label: 'Google Calendar'});
 
 // Alarm
 grid.set(8, 8, 4, 2, blessed.box, {label: 'Alarm'});
