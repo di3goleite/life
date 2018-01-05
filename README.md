@@ -32,7 +32,7 @@ $ npm start
   - [x] Hacker News
   - [x] Twitter Trends
   - [x] Weather
-  - [ ] Google Calenda
+  - [ ] Google Calendar
   - [ ] Cryptocurrency News
   - [ ] Overflow News
   - [ ] Alarm
