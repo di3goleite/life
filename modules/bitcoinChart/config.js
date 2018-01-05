@@ -10,3 +10,4 @@ module.exports = {
   wholeNumbersOnly: false,
   label: 'Bitcoin Chart'
 };
+

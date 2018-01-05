@@ -2,8 +2,6 @@ require('dotenv').load();
 
 const blessed = require('blessed');
 const contrib = require('blessed-contrib');
-
-const config = require('./config');
 const m = require('./modules');
 
 const screen = blessed.screen();
@@ -40,7 +38,7 @@ m.githubTrends.get(function(lines) {
 });
 
 // Bitcoin Chart
-const bitcoinChart = grid.set(0, 4, 4, 4, contrib.line, config.bitcoinChart);
+const bitcoinChart = grid.set(0, 4, 4, 4, contrib.line, m.bitcoinChart.config);
 
 m.bitcoinChart.get(function(data) {
   bitcoinChart.setData({
