@@ -32,3 +32,4 @@ function get(callback) {
 }
 
 module.exports = { get, config };
+

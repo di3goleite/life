@@ -1,4 +1,4 @@
 module.exports = {
-  label: 'Twitter Trends',
+  label: 'Twitter Trends'
 };
 

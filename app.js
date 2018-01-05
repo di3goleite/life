@@ -52,7 +52,7 @@ m.bitcoinChart.get(function(data) {
 });
 
 // Crypto Prices
-const cryptoPrices = grid.set(4, 4, 4, 4, contrib.table, config.cryptoPrices);
+const cryptoPrices = grid.set(4, 4, 4, 4, contrib.table, m.cryptoPrices.config);
 
 m.cryptoPrices.get(function(data) {
   cryptoPrices.setData({

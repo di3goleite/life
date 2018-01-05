@@ -1,8 +1,8 @@
 const axios = require('axios');
+const config = require('./config');
 
-module.exports = {
-  get: function(callback) {
-    axios.get('https://api.coinmarketcap.com/v1/ticker/?limit=15')
+function get(callback) {
+  axios.get('https://api.coinmarketcap.com/v1/ticker/?limit=15')
     .then(function(response) {
       const coins = response.data.map(function(coin) {
         return [
@@ -14,6 +14,8 @@ module.exports = {
       });
 
       callback(coins);
-    })
-  }
-};
+    });
+}
+
+module.exports = { get, config };
+
