@@ -8,6 +8,7 @@
 Generate the environment variable values, see `.env.example`:
 * [Twitter Apps](https://apps.twitter.com/)
 * [Forecast.io](http://forecast.io/)
+* [NewsAPI.org](https://newsapi.org/)
 
 Create the `.env` file and insert the generated values:
 ```
@@ -33,7 +34,7 @@ $ npm start
   - [x] Twitter Trends
   - [x] Weather
   - [ ] Google Calendar
-  - [ ] Cryptocurrency News
+  - [x] Cryptocurrency News
   - [ ] Overflow News
   - [ ] Alarm
   - [ ] Clock
@@ -44,4 +45,3 @@ $ npm start
   - [ ] Set a module as full screen
   - [ ] Interact with modules
   - [ ] Open link and render page inside the terminal
-

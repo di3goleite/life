@@ -59,7 +59,13 @@ m.cryptoPrices.get(function(data) {
 });
 
 // Crypto News
-grid.set(8, 4, 4, 4, blessed.box, {label: 'Crypto News'});
+const cryptoNews = grid.set(8, 4, 4, 4, contrib.log, m.cryptoNews.config);
+
+m.cryptoNews.get(function(news){
+  news.forEach(function(title){
+    cryptoNews.log(title);
+  })
+});
 
 // Weather
 const weather = grid.set(0, 8, 4, 4, blessed.log, m.weather.config);
@@ -86,4 +92,3 @@ screen.key(['escape', 'q', 'C-c'], function (ch, key) {
 });
 
 screen.render();
-
