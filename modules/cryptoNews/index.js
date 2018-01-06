@@ -11,7 +11,7 @@ function get(callback) {
       const articles = response.data.articles;
       let news = [];
 
-      for (var i = 0; i < 11; i++) {
+      for (var i = 0; i < 12; i++) {
         news.push(articles[i].title);
       }
 
@@ -20,3 +20,4 @@ function get(callback) {
 }
 
 module.exports = { get, config };
+
