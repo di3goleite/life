@@ -25,7 +25,7 @@ $ npm install
 $ npm start
 ```
 
-## Roadmap
+## Roadmap [v1.0.0]
 - [ ] Modules
   - [x] Bitcoin Chart
   - [x] Cryptocurrency Prices
@@ -40,8 +40,15 @@ $ npm start
   - [ ] Clock
 
 - [ ] Features
+  - [ ] Realtime modules refresh
   - [ ] Style modules with color, font and spacing
   - [ ] Navigate on the modules with keyboard arrows
   - [ ] Set a module as full screen
   - [ ] Interact with modules
   - [ ] Open link and render page inside the terminal
+
+- [ ] Bugfixes
+  - [ ] Startup performance issue with Raspberry Pi Zero W
+  - [ ] Wrong characters symbols for Raspberry Pi Zero W
+  - [ ] Responsiveness
+
