@@ -12,7 +12,10 @@ function get(callback) {
         yAxis.push(value.y);
       });
 
-      callback({time: xAxis.slice(-6), value: yAxis.slice(-6)});
+      callback(null, {time: xAxis.slice(-6), value: yAxis.slice(-6)});
+    })
+    .catch(function (err) {
+      callback(err, null);
     });
 }
 

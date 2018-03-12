@@ -7,11 +7,14 @@ function fetchStories(callback) {
     .then(function(response) {
       let topStories = [];
 
-      for (var i = 0; i < 12; i++) {
+      for (var i = 0; i < 80; i++) {
         topStories.push(response.data[i]);
       }
 
       callback(null, topStories);
+    })
+    .catch(function (err) {
+      console.log(err);
     });
 }
 
@@ -19,6 +22,9 @@ function fetchStoryDetails(storyNumber, callback) {
   axios.get('https://hacker-news.firebaseio.com/v0/item/' + storyNumber + '.json')
     .then(function(response) {
       callback(null, response.data);
+    })
+    .catch(function (err) {
+      console.log(err);
     });
 }
 

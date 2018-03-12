@@ -1,4 +1,11 @@
 module.exports = {
-  label: 'Hacker News'
+  label: 'Hacker News',
+  style: {
+    hover: {
+      border: {
+          fg: 'red'
+      }
+    }
+  }
 };
 

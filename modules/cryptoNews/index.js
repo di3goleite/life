@@ -15,7 +15,10 @@ function get(callback) {
         news.push(articles[i].title);
       }
 
-      callback(news);
+      callback(null, news);
+    })
+    .catch(function (err) {
+      callback(err.response.data.message, null);
     });
 }
 

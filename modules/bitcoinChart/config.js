@@ -2,7 +2,12 @@ module.exports = {
   style: {
     line: "green",
     text: "white",
-    baseline: "yellow"
+    baseline: "yellow",
+    hover: {
+      border: {
+        fg: 'red'
+      }
+    }
   },
   xLabelPadding: 5,
   xPadding: 10,

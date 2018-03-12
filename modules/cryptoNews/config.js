@@ -1,4 +1,11 @@
 module.exports = {
-  label: 'Crypto News'
+  label: 'Crypto News',
+  style: {
+    hover: {
+      border: {
+          fg: 'red'
+      }
+    }
+  }
 };
 

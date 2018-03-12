@@ -25,7 +25,10 @@ function get(callback) {
         };
       });
 
-      callback(forecasts);
+      callback(null, forecasts);
+    })
+    .catch(function(err) {
+      callback(err.response.statusText, null);
     });
 }
 

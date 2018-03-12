@@ -13,7 +13,10 @@ function get(callback) {
         ];
       });
 
-      callback(coins);
+      callback(null, coins);
+    })
+    .catch(function (err) {
+      callback(err);
     });
 }
 
