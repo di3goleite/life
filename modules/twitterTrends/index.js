@@ -19,6 +19,9 @@ function get(callback) {
     process.env.TWITTER_ACCESS_TOKEN,
     process.env.TWITTER_ACCESS_TOKEN_SECRET,
     function(error, data, response) {
+      if (error) {
+        return callback(JSON.parse(error.data).errors[0].message, null);
+      }
       const trends = JSON.parse(data)[0].trends
         .map(function(trend) {
           return trend.name;
@@ -27,7 +30,7 @@ function get(callback) {
           return !/[\u0600-\u06FF]/.test(trend);
         });
 
-      callback(trends.slice(0, 12));
+      callback(null, trends.slice(0, 12));
     });
 }
 

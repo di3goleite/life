@@ -1,4 +1,11 @@
 module.exports = {
-  label: 'GitHub Trends'
+  label: 'GitHub Trends',
+  style: {
+    hover: {
+      border: {
+          fg: 'red'
+      }
+    }
+  }
 };
 

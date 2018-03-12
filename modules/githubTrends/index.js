@@ -7,12 +7,15 @@ function get(callback) {
     .then(function(response) {
       let repos = [];
 
-      for (var i = 0; i < 12; i++) {
+      for (var i = 0; i < response.length; i++) {
         repos.push(`${response[i].author}/${response[i].name}`);
       }
 
-      callback(repos);
+      callback(null, repos);
     })
+    .catch(function (err) {
+      callback(err);
+    });
 }
 
 module.exports = { get, config };

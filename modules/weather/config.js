@@ -1,4 +1,11 @@
 module.exports = {
-  label: 'Weather'
+  label: 'Weather',
+  style: {
+    hover: {
+      border: {
+          fg: 'red'
+      }
+    }
+  }
 };
 
