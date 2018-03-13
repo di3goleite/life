@@ -37,13 +37,14 @@ $ npm start
   - [x] Cryptocurrency News
   - [ ] Overflow News
   - [ ] Alarm
-  - [ ] Clock
+  - [x] Clock
 
 - [ ] Features
   - [ ] Realtime modules refresh
   - [ ] Style modules with color, font and spacing
   - [ ] Navigate on the modules with keyboard arrows
-  - [ ] Set a module as full screen
+  - [x] Navigate on the modules with mouse
+  - [x] Set a module as full screen
   - [ ] Interact with modules
   - [ ] Open link and render page inside the terminal
 
